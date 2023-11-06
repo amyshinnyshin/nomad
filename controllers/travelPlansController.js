@@ -24,6 +24,7 @@ const getNewTravelPlanForm = async (req, res) => {
 }
 
 
+
 //POST new travel plan by creating plan 
 const createTravelPlan = async (req, res) => {
     const travelPlan = new TravelPlans({
@@ -84,6 +85,7 @@ const deleteTravelPlan = async (req, res) => {
     }
   }
 
+  
 
 //–––––––––––––––––––––––––GET By ID
 const getTravelPlansById = async function getTravelPlan(req, res, next) {
