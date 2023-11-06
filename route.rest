@@ -1,0 +1,29 @@
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "planName": "Effiel Tower",
+    "location": "Paris",
+    "planDescription": "Planning",
+    "events": []
+}
+
+
+### 
+GET http://localhost:3000/
+
+
+###
+GET http://localhost:3000/65483d693cf5a4d662405654
+
+
+###
+DELETE http://localhost:3000/654840b783219f884b823ebd
+
+
+###
+PATCH http://localhost:3000/65483d693cf5a4d662405654
+Content-Type: application/json
+{
+    "planName": "London Bridge"
+}

@@ -2,7 +2,8 @@ const express = require("express")
 const app = express(); 
 const { DATABASE_URL, PORT } = require("./config.js")
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 
 
 //--------------  Start Server Variable  ----------------//
@@ -25,6 +26,12 @@ app.use(express.static('public'));
 
 
 //--------------  Routing ----------------//
+const travelPlansRouter = require("./routes/TravelPlansRouter.js");
+
+
+
+
+app.use('/', travelPlansRouter)
 
 
 
