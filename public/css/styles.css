@@ -2,6 +2,8 @@
     --black-50: #F6F6F6;
     --black-100: #E7E7E7;
     --black-200: #D1D1D1;
+    --black-500: #6D6D6D;
+    --black-600: #5D5D5D;
     --black-900: #3D3D3D;
     --black-950: #050505;
 
@@ -103,22 +105,51 @@ a {
 
 
 
+/* Primary Button 1️⃣ */ 
+.primary-button {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 24px;
+    background: var(--saffron-400);
+    cursor: pointer;
+}
 
-.primary-button.with-icon {
+.primary-button.with-icon, .secondary-button.with-icon{
     display: flex;
     padding: 12px 32px;
     justify-content: center;
     align-items: flex-start;
     gap: 8px;
     border-radius: 24px;
-    background: var(--saffron-400);
     height: 24px;
     cursor: pointer;
+}
+
+.primary-button.with-icon{
+    display: flex;
+    background: var(--saffron-400);
 }
 
 .primary-button.with-icon:hover {
     background: var(--saffron-500);
 }
+
+.continue-button {
+    margin-top: 16px;
+}
+
+
+
+/* Secondary Button 2️⃣ */  
+.secondary-button.with-icon{
+    background: var(--black-50);
+}
+
+.secondary-button.with-icon:hover {
+    background: var(--black-100);
+}
+
+
 
 
 .left-nav-add-button {
@@ -223,6 +254,7 @@ a.brand {
     align-items: center;
     gap: 8px;
 }
+
 .community-user-group {
     display: flex;
     align-items: center;
@@ -245,3 +277,33 @@ a.brand {
 }
 
 
+
+
+/* ------------------ Topbar ------------------ */
+ul.breadcrumbs {
+    list-style: none;
+    margin: 0px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px 32px;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 24px;
+}
+
+.current{
+    font-weight: 600;
+}
+
+.previous{
+    font-weight: 300;
+}
+
+.next{
+    color: var(--black-500)
+}

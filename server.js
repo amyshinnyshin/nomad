@@ -26,13 +26,13 @@ app.use(express.static('public'));
 
 
 //--------------  Routing ----------------//
-const travelPlansRouter = require("./routes/TravelPlansRouter.js");
+const travelPlansRouter = require("./routes/travelPlansRouter.js");
+const homepageRouter = require("./routes/homepageRouter.js");
 
 
 
-
-app.use('/', travelPlansRouter)
-
+app.use('/plans', travelPlansRouter)
+app.use('/', homepageRouter)
 
 
 

@@ -1,5 +1,33 @@
 <%- include('partials/header.ejs'); -%>
 
+    <div class="main-body-container">
+        <%- include('partials/navigation/breadcrumbs.ejs'); -%>
+        <div class="main-body">
 
+            <form class="plan-details" action="/plans/" method="POST">
+                <div class="input">
+                    <label for="planName">Plan Name</label>
+                    <input class="text-input" type="text" id="planName" name="planName">
+                </div>
+
+                <div class="input">
+                    <label for="location">Location</label>
+                    <input class="text-input" type="text" id="location" name="location">
+                </div>
+
+                <div class="input">
+                    <label for="planDescription">Description</label>
+                    <textarea class="paragraph-input planDescription" type="text" id="planDescription" name="planDescription"></textarea>
+                </div>
+
+
+                <div class="primary-button continue-button">
+                    <input class="input-button button-text" type="submit" value="Continue" id="">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
 
 <%- include('partials/footer.ejs'); -%>

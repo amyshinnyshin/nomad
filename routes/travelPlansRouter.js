@@ -8,10 +8,10 @@ const { getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPl
 // router.get("/", getAllTravelPlans);
 
 
-//GET new travel plan form
-router.get("/", getNewTravelPlanForm);
+//GET new travel plan form ✅
+router.get("/new", getNewTravelPlanForm);
 
-// POST a new travel plan
+// POST a new travel plan ✅ -- need to figure out how to post, find and get 
 router.post("/", createTravelPlan);
 
 

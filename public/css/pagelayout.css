@@ -1,0 +1,88 @@
+.main-body-container {
+    top: 72px;
+    left: 296px;
+    position: fixed;
+    height: calc(100vh - 72px);
+    width: calc(100vw - 296px);
+}
+
+.main-body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 24px;
+    padding: 24px 32px 24px 32px;
+}
+
+
+.page-header {
+    grid-column: span 12;
+}
+
+.page-header h1 {
+    padding-bottom: 24px;
+}
+
+.empty-state-container {
+    grid-column: span 12;
+}
+
+.empty-state {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 64px;
+}
+
+img.plans-empty-state {
+    height: 208px;
+}
+
+.empty-state-copy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+
+
+form.plan-details {
+    gap: 16px;
+    grid-column: span 8;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+}
+
+label {
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 2px;
+    color: var(--black-900)
+}
+
+.text-input, .paragraph-input {
+    align-self: stretch;
+    border-radius: 24px;
+    border: 1px solid var(--black-600);
+
+    font-family: Outfit;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.text-input {
+    height: 30px;
+    padding: 0px 16px;
+}
+
+.paragraph-input {
+    height: 158px;
+    padding: 8px 16px;
+}

@@ -14,7 +14,7 @@ const TravelPlans = require("../models/travelPlansModel");
 // };
 
 
-//GET new travel plans form
+//GET new travel plans form -- WORKS! ✅
 const getNewTravelPlanForm = async (req, res) => {
     try {
         res.render("travelPlanForm.ejs")
@@ -22,6 +22,11 @@ const getNewTravelPlanForm = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 }
+
+
+
+
+
 
 
 
