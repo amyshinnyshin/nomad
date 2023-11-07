@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const TravelPlans = require("../models/travelPlansModel");
-const { getAllTravelPlans, getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById, getEventsForm } = require("../controllers/travelPlansController");
+const { getAllTravelPlans, getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getEventsForm, getTravelPlansById } = require("../controllers/travelPlansController");
 
 
-//GET all 
 router.get("/", getAllTravelPlans);
 
 
@@ -19,15 +18,15 @@ router.get("/new/events", getEventsForm)
 
 
 //GET one by id 
-router.get("/:id", getTravelPlansById, getOneTravelPlan);
+router.get("/:id", getOneTravelPlan);
 
 
 //PATCH by id
-router.patch("/:id", getTravelPlansById, updateTravelPlan);
+router.patch("/:id", updateTravelPlan);
 
 
 // DELETE by id
-router.delete('/:id', deleteTravelPlan);
+router.delete('/', getTravelPlansById, deleteTravelPlan);
 
 
 

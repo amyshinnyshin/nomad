@@ -111,37 +111,38 @@ const updateTravelPlan =  async (req, res) => {
 
 
 
-//DELETE by ID, deleting a plan...
-// const deleteTravelPlan = async (req, res) => {
-//     try {
-//         const result = await res.plan.deleteOne();
-//         console.log('Delete result:', result);
-//         res.json({ message: 'Deleted travel plan' });
-//     } catch (err) {
-//         console.error('Delete error:', err);
-//         res.status(500).json({ message: err.message });
-//     }
-// }
-
-
+// DELETE by ID, deleting a plan...
 const deleteTravelPlan = async (req, res) => {
     try {
-        const deletedPlan = await TravelPlans.findByIdAndDelete(req.params.id);
-        if (deletedPlan) {
-            res.redirect("/myplans");
-        } else {
-            return res.status(404).json({ message: 'Cannot find travel plan' });
-        }
+        const result = await res.plan.deleteOne();
+        console.log('Delete result:', result);
+        res.json({ message: 'Deleted travel plan' });
     } catch (err) {
         console.error('Delete error:', err);
         res.status(500).json({ message: err.message });
     }
-};
+}
+
+
+// const deleteTravelPlan = async (req, res) => {
+//     try {
+//         const deletedPlan = await TravelPlans.findByIdAndDelete(req.params.id);
+//         if (deletedPlan) {
+//             res.redirect("/myplans");
+//         } else {
+//             return res.status(404).json({ message: 'Cannot find travel plan' });
+//         }
+//     } catch (err) {
+//         console.error('Delete error:', err);
+//         res.status(500).json({ message: err.message });
+//     }
+// };
+
 
 
   
 
-//–––––––––––––––––––––––––GET By ID
+// –––––––––––––––––––––––––GET By ID
 const getTravelPlansById = async function getTravelPlan(req, res, next) {
     let plan;
     try {
@@ -159,4 +160,4 @@ const getTravelPlansById = async function getTravelPlan(req, res, next) {
 
 
 
-module.exports = { getAllTravelPlans, getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById, getEventsForm }
+module.exports = { getAllTravelPlans, getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getEventsForm, getTravelPlansById }

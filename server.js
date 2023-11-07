@@ -21,13 +21,13 @@ const startServer = async () => {
 
 
 //--------------  Set Up Middleware  ----------------//
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //--------------  Routing ----------------//
-const travelPlansRouter = require("./routes/travelPlansRouter.js");
+const travelPlansRouter = require("./routes/travelPlanRouter.js");
 const homepageRouter = require("./routes/homepageRouter.js");
 
 

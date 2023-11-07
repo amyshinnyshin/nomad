@@ -24,18 +24,17 @@
                         <td class="td-plan-description"><%= plan.planDescription %></td>
                         <td class="td-actions">
                             <div class="action-button-group">
-                                <form action="/myplans/<%= plan._id %>" method="PATCH">
+                                <form action="/myplans/<%= plan._id%>" method="POST">
                                     <div class="tertiary-button with-icon">
                                         <img class="icon-default" src="/img/edit.png" alt="">
                                         <input class="input-button action-button-text edit" type="submit" value="Edit">
                                     </div>
                                 </form>
                                 <img class="icon-default" src="/img/divider.png" alt="">
-                                <form action="/myplans/<%= plan._id %>" method="POST">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button class="tertiary-button input-button action-button-text delete" type="submit">
-                                        Delete
-                                    </button>
+                                <form action="/myplans/<%= plan._id%>/" method="DELETE">
+                                    <div class="tertiary-button">
+                                        <input class="input-button action-button-text delete" type="submit" value="Delete">
+                                    </div>
                                 </form>                                
                                 
                             </div>
