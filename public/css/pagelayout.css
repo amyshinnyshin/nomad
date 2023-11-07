@@ -48,15 +48,25 @@ img.plans-empty-state {
 
 
 
-form.plan-details {
-    gap: 16px;
+form.plan-details, form.events-details {
     grid-column: span 8;
+}
+
+.date-and-time-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
 }
 
 .input {
     display: flex;
     flex-direction: column;
     padding-bottom: 16px;
+}
+
+.date {
+    flex: 1 0 0;
 }
 
 label {
@@ -86,3 +96,4 @@ label {
     height: 158px;
     padding: 8px 16px;
 }
+

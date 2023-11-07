@@ -24,13 +24,7 @@ const getNewTravelPlanForm = async (req, res) => {
 }
 
 
-
-
-
-
-
-
-//POST new travel plan by creating plan 
+//POST new travel plan by creating plan ✅
 const createTravelPlan = async (req, res) => {
     const travelPlan = new TravelPlans({
         planName: req.body.planName, 
@@ -46,6 +40,21 @@ const createTravelPlan = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+
+
+//GET new events form... ––––––––––––––––––––––––––– 🗓
+const getEventsForm = async (req, res) => {
+    try {
+        res.render("eventScheduleForm.ejs")
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
+
+//––––––––––––––––––––––––––––––––––––––––––––––---– 🗓
+
 
 
 
@@ -110,4 +119,4 @@ const getTravelPlansById = async function getTravelPlan(req, res, next) {
 
 
 
-module.exports = { getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById }
+module.exports = { getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById, getEventsForm }
