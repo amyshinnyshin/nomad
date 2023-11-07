@@ -4,14 +4,16 @@ const TravelPlans = require("../models/travelPlansModel");
 
 
 //GET all travel plans function
-// const getAllTravelPlans = async (req, res) => {
-//     try {
-//         const allTravelPlans = await TravelPlans.find(); // Use the TravelPlan model to find all plans
-//         res.status(200).json(allTravelPlans);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
+const getAllTravelPlans = async (req, res) => {
+    try {
+        const allTravelPlans = await TravelPlans.find(); // Use the TravelPlan model to find all plans
+        res.render("homepage-w-plans.ejs", { travelPlans: allTravelPlans })
+        
+        // res.status(200).json(allTravelPlans);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
 
 //GET new travel plans form -- WORKS! ✅
@@ -24,22 +26,42 @@ const getNewTravelPlanForm = async (req, res) => {
 }
 
 
-//POST new travel plan by creating plan ✅
-const createTravelPlan = async (req, res) => {
+// //POST new travel plan by creating plan ✅
+// const createTravelPlan = async (req, res) => {
+//     const travelPlan = new TravelPlans({
+//         planName: req.body.planName, 
+//         location: req.body.location,
+//         planDescription: req.body.planDescription, 
+//         events: [],
+//     });
+
+//     try {
+//         const newTravelPlan = await travelPlan.save();
+//         res.status(201).json(newTravelPlan);
+//     } catch (error) {
+//         res.status(400).json({ message: error.message });
+//     }
+// };
+
+//POST new travel plan >> render homepage-w-plan.ejs ✅
+const createTravelPlan = async (req, res, next) => {
     const travelPlan = new TravelPlans({
         planName: req.body.planName, 
         location: req.body.location,
         planDescription: req.body.planDescription, 
         events: [],
     });
-
     try {
-        const newTravelPlan = await travelPlan.save();
-        res.status(201).json(newTravelPlan);
+        await travelPlan.save();
+        const allTravelPlans = await TravelPlans.find(); // Use the TravelPlan model to find all plans
+        res.render("homepage-w-plans.ejs", { travelPlans: allTravelPlans })
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
+    next()
 };
+
+
 
 
 
@@ -90,14 +112,32 @@ const updateTravelPlan =  async (req, res) => {
 
 
 //DELETE by ID, deleting a plan...
+// const deleteTravelPlan = async (req, res) => {
+//     try {
+//         const result = await res.plan.deleteOne();
+//         console.log('Delete result:', result);
+//         res.json({ message: 'Deleted travel plan' });
+//     } catch (err) {
+//         console.error('Delete error:', err);
+//         res.status(500).json({ message: err.message });
+//     }
+// }
+
+
 const deleteTravelPlan = async (req, res) => {
     try {
-        await res.plan.deleteOne();
-      res.json({ message: 'Deleted travel plan' })
+        const deletedPlan = await TravelPlans.findByIdAndDelete(req.params.id);
+        if (deletedPlan) {
+            res.redirect("/myplans");
+        } else {
+            return res.status(404).json({ message: 'Cannot find travel plan' });
+        }
     } catch (err) {
-      res.status(500).json({ message: err.message })
+        console.error('Delete error:', err);
+        res.status(500).json({ message: err.message });
     }
-  }
+};
+
 
   
 
@@ -119,4 +159,4 @@ const getTravelPlansById = async function getTravelPlan(req, res, next) {
 
 
 
-module.exports = { getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById, getEventsForm }
+module.exports = { getAllTravelPlans, getNewTravelPlanForm, createTravelPlan, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getTravelPlansById, getEventsForm }

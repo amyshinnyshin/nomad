@@ -2,6 +2,7 @@
     --black-50: #F6F6F6;
     --black-100: #E7E7E7;
     --black-200: #D1D1D1;
+    --black-300: #B0B0B0;
     --black-500: #6D6D6D;
     --black-600: #5D5D5D;
     --black-900: #3D3D3D;
@@ -11,7 +12,7 @@
     --saffron-500: #F6C113;
   }
 
-/* ------------------ Typography Styles------------------ */
+    /* ------------------ Typography Styles------------------ */
 
 body {
     font-family: Outfit;
@@ -85,6 +86,14 @@ a {
     margin: 0px;
 }
 
+.action-button-text {
+    font-family: Outfit;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0px;
+}
+
 
 
 
@@ -148,6 +157,17 @@ a {
 .secondary-button.with-icon:hover {
     background: var(--black-100);
 }
+
+
+
+/* Tertiary Button 3️⃣ */  
+.tertiary-button.with-icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+}
+
 
 
 

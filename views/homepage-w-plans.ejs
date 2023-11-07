@@ -1,0 +1,52 @@
+<%- include('partials/header.ejs'); -%>
+    <div class="main-body-container">
+
+        <div class="main-body">
+
+            <div class="page-header">
+                <h1>My Plans</h1>
+            </div>
+
+            <table class="my-plan-table">
+                <thead>
+                    <tr class="table-header">
+                        <th class="th-plan-name">Name</th>
+                        <th class="th-location">Location</th>
+                        <th class="th-location">Description</th>
+                        <th class="th-actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% travelPlans.forEach(function(plan) { %>
+                    <tr class="body-row">
+                        <td class="td-plan-name"><%= plan.planName %></td>
+                        <td class="td-location"><%= plan.location %></td>
+                        <td class="td-plan-description"><%= plan.planDescription %></td>
+                        <td class="td-actions">
+                            <div class="action-button-group">
+                                <form action="/myplans/<%= plan._id %>" method="PATCH">
+                                    <div class="tertiary-button with-icon">
+                                        <img class="icon-default" src="/img/edit.png" alt="">
+                                        <input class="input-button action-button-text edit" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                                <img class="icon-default" src="/img/divider.png" alt="">
+                                <form action="/myplans/<%= plan._id %>" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="tertiary-button input-button action-button-text delete" type="submit">
+                                        Delete
+                                    </button>
+                                </form>                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+<%- include('partials/footer.ejs'); -%>

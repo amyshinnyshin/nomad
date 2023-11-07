@@ -4,35 +4,35 @@
         <%- include('partials/navigation/breadcrumbs.ejs'); -%>
         <div class="main-body">
 
-            <form class="events-details" action="/plans/" method="POST">
+            <form class="events-details" action="/plans/" method="PATCH">
                 <div class="input">
-                    <label for="planName">Event Name</label>
-                    <input class="text-input" type="text" id="planName" name="planName">
+                    <label for="eventName">Event Name</label>
+                    <input class="text-input" type="text" id="eventName" name="eventName">
                 </div>
 
                 <div class="date-and-time-group">
                     <div class="input date">
-                        <label for="location">Date</label>
-                        <input class="text-input" type="date" id="location" name="location">
+                        <label for="eventDate">Date</label>
+                        <input class="text-input" type="date" id="eventDate" name="eventDate">
                     </div>
                     <div class="input time">
-                        <label for="location">Start Time</label>
-                        <input class="text-input" type="time" id="location" name="location">
+                        <label for="startTime">Start Time</label>
+                        <input class="text-input" type="time" id="startTime" name="startTime">
                     </div>
                     <div class="input time">
-                        <label for="location">End Time</label>
-                        <input class="text-input" type="time" id="location" name="location">
+                        <label for="endTime">End Time</label>
+                        <input class="text-input" type="time" id="endTime" name="endTime">
                     </div>
                 </div>
 
                 <div class="input">
-                    <label for="planDescription">Description</label>
-                    <textarea class="paragraph-input planDescription" type="text" id="planDescription" name="planDescription"></textarea>
+                    <label for="eventDescription">Description</label>
+                    <textarea class="paragraph-input eventDescription" type="text" id="eventDescription" name="eventDescription"></textarea>
                 </div>
 
 
                 <div class="primary-button continue-button">
-                    <input class="input-button button-text" type="submit" value="Continue" id="">
+                    <input class="input-button button-text" type="submit" value="Add Events" id="">
                 </div>
 
             </form>

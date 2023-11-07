@@ -97,3 +97,66 @@ label {
     padding: 8px 16px;
 }
 
+
+/* ------------------ Table Style ------------------ */
+.my-plan-table {
+    margin-top: 16px;
+    border-collapse: collapse;
+}
+
+table {
+    grid-column: span 12;
+}
+
+th {
+    padding: 12px 16px 12px 16px;  
+    border-bottom: 1px solid var(--black-300);
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+td {
+    padding: 20px 16px 20px 16px;
+    border-bottom: 1px solid var(--black-100);
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.body-row:hover {
+    background-color: var(--black-50);
+}
+
+.th-plan-name, .td-plan-name, .th-location, .td-location {
+    text-align: left;
+}
+
+.th-actions {
+    text-align: right;
+}
+
+.td-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-button-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    visibility: hidden;
+    pointer-events: none;
+}  
+
+.body-row:hover .action-button-group {
+    pointer-events: auto;
+    cursor: pointer;
+    visibility: visible;
+}
+
+.delete {
+    color: #DB0000;
+}

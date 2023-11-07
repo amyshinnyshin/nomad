@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express(); 
 const { DATABASE_URL, PORT } = require("./config.js")
+const methodOverride = require('method-override');
 
 const mongoose = require("mongoose");
 
@@ -23,7 +24,7 @@ const startServer = async () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
+app.use(methodOverride('_method'));
 
 //--------------  Routing ----------------//
 const travelPlansRouter = require("./routes/travelPlansRouter.js");
@@ -31,7 +32,7 @@ const homepageRouter = require("./routes/homepageRouter.js");
 
 
 
-app.use('/plans', travelPlansRouter)
+app.use('/myplans', travelPlansRouter)
 app.use('/', homepageRouter)
 
 
