@@ -4,10 +4,10 @@
         <%- include('partials/navigation/breadcrumbs.ejs'); -%>
         <div class="main-body">
 
-            <form class="plan-details" action="/myplans/" method="POST">
+            <form class="plan-details" action="/myplans/events/" method="POST">
                 <div class="input">
                     <label for="planName">Plan Name</label>
-                    <input class="text-input" type="text" id="planName" name="planName">
+                    <input class="text-input" type="text" id="planName" name="planName" required>
                 </div>
 
                 <div class="input">

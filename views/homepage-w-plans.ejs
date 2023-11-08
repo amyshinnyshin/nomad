@@ -31,7 +31,7 @@
                                     </div>
                                 </form>
                                 <img class="icon-default" src="/img/divider.png" alt="">
-                                <form action="/myplans/<%= plan._id%>/" method="DELETE">
+                                <form action="/myplans/<%= plan._id%>/?_method=DELETE" method="POST">
                                     <div class="tertiary-button">
                                         <input class="input-button action-button-text delete" type="submit" value="Delete">
                                     </div>
