@@ -7,15 +7,15 @@ const eventSchema = new mongoose.Schema({
     },
     eventDate: {
         type: Date, 
-        default:Date.now()
+        default: Date.now()
     },
     startTime: {
         type: String, 
-        default:Date.now()
+        default: "00.00"
     },
     endTime: {
         type: String, 
-        default:Date.now()
+        default: "00.00"
     },
     eventDescription: {
         type:String

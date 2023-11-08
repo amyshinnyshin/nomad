@@ -1,0 +1,58 @@
+<%- include('partials/header.ejs'); -%>
+    <div class="main-body-container">
+
+        <section class="breadcrumbs-container">
+
+            <ul class="breadcrumbs">
+                <li class="breadcrumb-item breadcrumb-toppage">
+                    <a class="breadcrumb-item my-plans" href="/myplans">
+                        <span class="icon-container-default"><img class="icon-default" src="/img/plans.png" alt=""></span>
+                        My Plans
+                    </a>
+                </li>
+                <img class="icon-default" src="/img/slash-forward.png" alt="">
+                <li>
+                    <a class="breadcrumb-item new-plan" href="">
+                        <%= travelPlan.planName %>
+                    </a>
+                </li>
+            </ul>
+        
+        </section>
+
+        <div class="main-body">
+            <div class="read-plan-details-container">
+
+                <div class="read-plan-details">
+                    <div class="plan-header-subheader">
+                        <h2><%= travelPlan.planName %></h2>
+                        <p class="subheader"><%= travelPlan.location %></p>
+                    </div>
+                    <p><%= travelPlan.planDescription %></p>
+                </div>
+
+                <div class="event-schedule">
+                    <h4>Schedule</h4>
+                    <% travelPlan.events.forEach(function(event) { %>
+                        <div class="event-container">
+                            <div class="event-name-date-time">
+                                <h6><%= event.eventName %></h6>
+                                <div class="date-and-time">
+                                    <p class="subheader"><%= event.eventDate.toDateString() %></p>
+                                    <img class="icon-default" src="/img/divider.png" alt="">
+                                    <p class="subheader"><%= event.startTime %> -</p>
+                                    <p class="subheader"><%= event.endTime %></p>
+                                </div>
+                            </div>
+                            <p><%= event.eventDescription %></p>
+                        </div>
+                    <% }); %>
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+<%- include('partials/footer.ejs'); -%>

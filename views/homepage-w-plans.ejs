@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <% travelPlans.forEach(function(plan) { %>
-                    <tr class="body-row">
+                    <tr class="body-row" data-plan-id="<%= plan._id %>">
                         <td class="td-plan-name"><%= plan.planName %></td>
                         <td class="td-location"><%= plan.location %></td>
                         <td class="td-plan-description"><%= plan.planDescription %></td>

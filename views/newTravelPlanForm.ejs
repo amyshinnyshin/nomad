@@ -1,33 +1,48 @@
 <%- include('partials/header.ejs'); -%>
 
-    <div class="main-body-container">
-        <%- include('partials/navigation/breadcrumbs.ejs'); -%>
-        <div class="main-body">
+<div class="main-body-container">
+    <!-- <%- include('partials/navigation/breadcrumbs.ejs'); -%> -->
+    <section class="breadcrumbs-container">
 
-            <form class="plan-details" action="/myplans/events/" method="POST">
-                <div class="input">
-                    <label for="planName">Plan Name</label>
-                    <input class="text-input" type="text" id="planName" name="planName" required>
-                </div>
+        <ul class="breadcrumbs">
+            <li class="breadcrumb-item breadcrumb-toppage">
+                <a class="breadcrumb-item my-plans" href="/myplans">
+                    <span class="icon-container-default"><img class="icon-default" src="/img/plans.png" alt=""></span>
+                    My Plans
+                </a>
+            </li>
+            <img class="icon-default" src="/img/slash-forward.png" alt="">
+            <li>
+                <a class="breadcrumb-item new-plan" href="">
+                    New Plan
+                </a>
+            </li>
+        </ul>
+    
+    </section>
 
-                <div class="input">
-                    <label for="location">Location</label>
-                    <input class="text-input" type="text" id="location" name="location">
-                </div>
+    <div class="main-body">
+        <form class="plan-details" action="/myplans/new" method="POST">
+            <div class="input">
+                <label for="planName">Plan Name</label>
+                <input class="text-input" type="text" id="planName" name="planName" required>
+            </div>
 
-                <div class="input">
-                    <label for="planDescription">Description</label>
-                    <textarea class="paragraph-input planDescription" type="text" id="planDescription" name="planDescription"></textarea>
-                </div>
+            <div class="input">
+                <label for="location">Location</label>
+                <input class="text-input" type="text" id="location" name="location">
+            </div>
 
+            <div class="input">
+                <label for="planDescription">Description</label>
+                <textarea class="paragraph-input planDescription" type="text" id="planDescription" name="planDescription"></textarea>
+            </div>
 
-                <div class="primary-button continue-button">
-                    <input class="input-button button-text" type="submit" value="Create Plan" id="">
-                </div>
-
-            </form>
-
-        </div>
+            <div class="primary-button continue-button">
+                <input class="input-button button-text" type="submit" value="Create Plan" id="">
+            </div>
+        </form>
     </div>
+</div>
 
 <%- include('partials/footer.ejs'); -%>

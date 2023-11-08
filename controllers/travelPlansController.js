@@ -3,13 +3,12 @@ const router = express.Router();
 const TravelPlans = require("../models/travelPlansModel");
 
 
-//GET all travel plans function
+//GET all travel plans function WORKS! ✅
 const getAllTravelPlans = async (req, res) => {
     try {
-        const allTravelPlans = await TravelPlans.find(); // Use the TravelPlan model to find all plans
+        const allTravelPlans = await TravelPlans.find(); 
         res.render("homepage-w-plans.ejs", { travelPlans: allTravelPlans })
         
-        // res.status(200).json(allTravelPlans);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -26,83 +25,75 @@ const getNewTravelPlanForm = async (req, res) => {
 }
 
 
-// //POST new travel plan by creating plan ✅
-// const createTravelPlan = async (req, res) => {
-//     const travelPlan = new TravelPlans({
-//         planName: req.body.planName, 
-//         location: req.body.location,
-//         planDescription: req.body.planDescription, 
-//         events: [],
-//     });
-
-//     try {
-//         const newTravelPlan = await travelPlan.save();
-//         res.status(201).json(newTravelPlan);
-//     } catch (error) {
-//         res.status(400).json({ message: error.message });
-//     }
-// };
-
-//POST new travel plan >> render homepage-w-plan.ejs ✅
-// const createTravelPlan = async (req, res, next) => {
-//     const travelPlan = new TravelPlans({
-//         planName: req.body.planName, 
-//         location: req.body.location,
-//         planDescription: req.body.planDescription, 
-//         events: [],
-//     });
-//     try {
-//         await travelPlan.save();
-//         const allTravelPlans = await TravelPlans.find(); // Use the TravelPlan model to find all plans
-//         res.render("homepage-w-plans.ejs", { travelPlans: allTravelPlans })
-//     } catch (error) {
-//         res.status(400).json({ message: error.message });
-//     }
-//     next();
-// };
-
-//POST new travel plan details but then get events page with the newly created id to add the events array...
+//POST new travel plans -- WORKS! ✅
 const createTravelPlanDetails = async (req, res, next) => {
-    const travelPlan = new TravelPlans({
-        planName: req.body.planName, 
-        location: req.body.location,
-        planDescription: req.body.planDescription, 
-        events: [],
-        
-    });
     try {
+        const { planName, location, planDescription } = req.body;
+
+        const travelPlan = new TravelPlans({
+            planName,
+            location,
+            planDescription,
+            events: [],
+        });
+
         await travelPlan.save();
+
+
+        res.redirect(`/myplans/${travelPlan._id}/events`);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-    next();
+
 }
 
 
 
 
 
-//GET new events form... ––––––––––––––––––––––––––– 🗓
+//EVENTS ––––––––––––––––––––––––––– 🗓
+//GET new events form... WORKS! ✅
 const getEventsForm = async (req, res) => {
     try {
-        await TravelPlans.findById(req.params.id)
-        res.render("newEventScheduleForm.ejs")
+        const travelPlan = await TravelPlans.findById(req.params.id);
+
+        if (!travelPlan) {
+            return res.status(404).json({ message: 'Travel plan not found' });
+        }
+
+        // Render the events page, passing the travelPlan object
+        res.render('newEventScheduleForm.ejs', { travelPlan: travelPlan });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-}
+};
 
 
-//PATCH new travel plan with EVENTS
-const patchEventsinTravelPlan = async (req, res, next) => {
+//PATCH new travel plan with EVENTS  - WORKS! ✅
+const addEventsInTravelPlan = async (req, res, next) => {
     try {
-        events.push(req.body);
-        TravelPlans.findById(req.params.id).save()
+      const travelPlan = await TravelPlans.findById(req.params.id);
+  
+      if (!travelPlan) {
+        return res.status(404).json({ message: 'Travel plan not found' });
+      }
+  
+      const newEvent = req.body;
 
+      travelPlan.events.push(newEvent);
+  
+      await travelPlan.save();
+  
+      res.redirect('/myplans');
     } catch (error) {
-        res.status(400).json({ message: error.message });
+      res.status(400).json({ message: error.message });
     }
-}
+  };
+  
+
+
+
+
 
 //––––––––––––––––––––––––––––––––––––––––––––––---– 🗓
 
@@ -112,11 +103,11 @@ const patchEventsinTravelPlan = async (req, res, next) => {
 
 
 
-//GET one by ID
-const getOneTravelPlan = (req, res) => {
-    res.send(res.plan)
+//GET one by ID -- WORKS! ✅
+const getOneTravelPlan = async (req, res) => {
+    const travelPlan = await TravelPlans.findById(req.params.id);
+    res.render("createdTravelPlan.ejs", { travelPlan: travelPlan })
 }
-
 
 
 //PATCH by ID, Updating Plan
@@ -143,19 +134,7 @@ const updateTravelPlan =  async (req, res) => {
 
 
 
-// DELETE by ID, deleting a plan...
-// const deleteTravelPlan = async (req, res) => {
-//     try {
-//         const result = await res.plan.deleteOne();
-//         console.log('Delete result:', result);
-//         res.json({ message: 'Deleted travel plan' });
-//     } catch (err) {
-//         console.error('Delete error:', err);
-//         res.status(500).json({ message: err.message });
-//     }
-// }
-
-
+// DELETE by ID, deleting a plan... WORKS! ✅
 const deleteTravelPlan = async (req, res) => {
     try {
         const deletedPlan = await TravelPlans.findByIdAndDelete(req.params.id);
@@ -175,21 +154,21 @@ const deleteTravelPlan = async (req, res) => {
   
 
 // –––––––––––––––––––––––––GET By ID
-const getTravelPlansById = async function getTravelPlan(req, res, next) {
-    let plan;
-    try {
-      plan = await TravelPlans.findById(req.params.id)
-      if (plan == null) {
-        return res.status(404).json({ message: 'Cannot find travel plan' })
-      }
-    } catch (err) {
-      return res.status(500).json({ message: err.message })
-    }
+// const getTravelPlansById = async function getTravelPlan(req, res, next) {
+//     let plan;
+//     try {
+//       plan = await TravelPlans.findById(req.params.id)
+//       if (plan == null) {
+//         return res.status(404).json({ message: 'Cannot find travel plan' })
+//       }
+//     } catch (err) {
+//       return res.status(500).json({ message: err.message })
+//     }
   
-    res.plan = plan;
-    next();
-}
+//     res.plan = plan;
+//     next();
+// }
 
 
 
-module.exports = { getAllTravelPlans, getNewTravelPlanForm, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getEventsForm, getTravelPlansById, createTravelPlanDetails}
+module.exports = { getAllTravelPlans, getNewTravelPlanForm, getOneTravelPlan, updateTravelPlan, deleteTravelPlan, getEventsForm, createTravelPlanDetails, addEventsInTravelPlan}

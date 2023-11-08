@@ -3,6 +3,7 @@
     --black-100: #E7E7E7;
     --black-200: #D1D1D1;
     --black-300: #B0B0B0;
+    --black-400: #888;
     --black-500: #6D6D6D;
     --black-600: #5D5D5D;
     --black-900: #3D3D3D;
@@ -73,6 +74,10 @@ p {
     line-height: 24px;
 }
 
+p.subheader {
+    color: var(--black-400);
+}
+
 a {
     text-decoration: none;
     color: var(--black-950);
@@ -94,8 +99,13 @@ a {
     margin: 0px;
 }
 
+.new-plan {
+    font-weight: 600;
+}
 
-
+.my-plans:hover {
+    text-decoration: underline;
+}
 
 /* ------------------ Button Styles------------------ */
 .icon-container-default, .icon-default {
