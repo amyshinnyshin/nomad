@@ -7,7 +7,8 @@
                 <h1>My Plans</h1>
             </div>
 
-            <table class="my-plan-table">
+            <!-- Show the table header -->
+            <table class="my-plan-table table-top">
                 <thead>
                     <tr class="table-header">
                         <th class="th-plan-name">Name</th>
@@ -16,34 +17,53 @@
                         <th class="th-actions">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <% travelPlans.forEach(function(plan) { %>
-                    <tr class="body-row" data-plan-id="<%= plan._id %>">
-                        <td class="td-plan-name"><%= plan.planName %></td>
-                        <td class="td-location"><%= plan.location %></td>
-                        <td class="td-plan-description"><%= plan.planDescription %></td>
-                        <td class="td-actions">
-                            <div class="action-button-group">
-                                <form action="/myplans/<%= plan._id%>" method="POST">
-                                    <div class="tertiary-button with-icon">
-                                        <img class="icon-default" src="/img/edit.png" alt="">
-                                        <input class="input-button action-button-text edit" type="submit" value="Edit">
-                                    </div>
-                                </form>
-                                <img class="icon-default" src="/img/divider.png" alt="">
-                                <form action="/myplans/<%= plan._id%>/?_method=DELETE" method="POST">
-                                    <div class="tertiary-button">
-                                        <input class="input-button action-button-text delete" type="submit" value="Delete">
-                                    </div>
-                                </form>                                
-                                
-                            </div>
-                        </td>
-                    </tr>
-                    <% }); %>
-                </tbody>
             </table>
 
+            <% if (travelPlans.length === 0) { %>
+                <!-- Show empty state if there are no plans -->
+                <div class="empty-state-container">
+                    <form class="empty-state" action="/myplans/new" method="GET">
+                        <img class="plans-empty-state" src="/img/launch.png"  alt="">
+                        <div class="empty-state-copy">
+                            <h4>Create a travel plan</h4>
+                            <p>Plan the perfect stress-free trip!</p>
+                        </div>
+                        <div class="secondary-button with-icon">
+                            <img class="icon-default" src="/img/add-dark.png" alt="">
+                            <input class="input-button button-text" type="submit" value="New Plan">
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <!-- Show the table if there are plans -->
+                <table class="my-plan-table">
+                    <tbody>
+                        <% travelPlans.forEach(function(plan) { %>
+                            <tr class="body-row" data-plan-id="<%= plan._id %>">
+                                <td class="td-plan-name"><%= plan.planName %></td>
+                                <td class="td-location"><%= plan.location %></td>
+                                <td class="td-plan-description"><%= plan.planDescription %></td>
+                                <td class="td-actions">
+                                    <div class="action-button-group">
+                                        <form action="/myplans/<%= plan._id%>" method="POST">
+                                            <div class="tertiary-button with-icon">
+                                                <img class="icon-default" src="/img/edit.png" alt="">
+                                                <input class="input-button action-button-text edit" type="submit" value="Edit">
+                                            </div>
+                                        </form>
+                                        <img class="icon-default" src="/img/divider.png" alt="">
+                                        <form action="/myplans/<%= plan._id%>/?_method=DELETE" method="POST">
+                                            <div class="tertiary-button">
+                                                <input class="input-button action-button-text delete" type="submit" value="Delete">
+                                            </div>
+                                        </form>                                
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } %>
 
         </div>
 

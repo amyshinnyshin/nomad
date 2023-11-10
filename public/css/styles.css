@@ -74,6 +74,7 @@ p {
     line-height: 24px;
 }
 
+
 p.subheader {
     color: var(--black-400);
 }
@@ -99,9 +100,9 @@ a {
     margin: 0px;
 }
 
-.new-plan {
+/* .new-plan {
     font-weight: 600;
-}
+} */
 
 .my-plans:hover {
     text-decoration: underline;
@@ -120,9 +121,21 @@ a {
     border: none;
     padding: 0px;
     cursor: pointer;
+
 }
 
-
+/* ----------------------------------------- 🔆 BUTTONS */
+button {
+    border: none;
+    background-color: white;
+    font-family: Outfit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 24px 0px 24px 0px;
+    margin: 0;
+    color: var(--black-600)
+}
 
 /* Primary Button 1️⃣ */ 
 .primary-button {

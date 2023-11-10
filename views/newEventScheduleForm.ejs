@@ -1,20 +1,19 @@
 <%- include('partials/header.ejs'); -%>
 
     <div class="main-body-container">
-        <!-- <%- include('partials/navigation/breadcrumbs.ejs'); -%> -->
         <section class="breadcrumbs-container">
 
             <ul class="breadcrumbs">
                 <li class="breadcrumb-item breadcrumb-toppage">
-                    <a class="breadcrumb-item my-plans" href="/myplans">
-                        <span class="icon-container-default"><img class="icon-default" src="/img/plans.png" alt=""></span>
-                        My Plans
+                    <a class="breadcrumb-item step-1" href="/myplans">
+                        <!-- <span class="icon-container-default"><img class="icon-default" src="/img/plans.png" alt=""></span> -->
+                        1. Plan Details
                     </a>
                 </li>
-                <img class="icon-default" src="/img/slash-forward.png" alt="">
+                <img class="icon-default" src="/img/divider.png" alt="">
                 <li>
-                    <a class="breadcrumb-item new-plan" href="">
-                        New Plan
+                    <a class="breadcrumb-item step-2" href="">
+                        2. Event Schedule
                     </a>
                 </li>
             </ul>
@@ -24,34 +23,50 @@
         <div class="main-body">
 
             <form class="events-details" action="/myplans/<%= travelPlan._id%>?_method=PATCH" method="POST">
-                <div class="input">
-                    <label for="eventName">Event Name</label>
-                    <input class="text-input" type="text" id="eventName" name="eventName">
+                <div class="form-header-container" id="remove-header-space">
+                    <h2>Add events to your trip</h2>
+                    <!-- <p>Add events to your travel plan schedule</p> -->
+                </div> 
+
+                <div class="events-container">
+                    <div class="an-event" id="original-event">
+                        <div class="input">
+                            <label for="eventName">Event Name</label>
+                            <input class="text-input" type="text" id="eventName" name="eventName">
+                        </div>
+
+                        <div class="date-and-time-group">
+                            <div class="input date">
+                                <label for="eventDate">Date</label>
+                                <input class="text-input" type="date" id="eventDate" name="eventDate">
+                            </div>
+                            <div class="input time">
+                                <label for="startTime">Start Time</label>
+                                <input class="text-input" type="time" id="startTime" name="startTime">
+                            </div>
+                            <div class="input time">
+                                <label for="endTime">End Time</label>
+                                <input class="text-input" type="time" id="endTime" name="endTime">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <label for="eventDescription">Description</label>
+                            <textarea class="paragraph-input eventDescription" type="text" id="eventDescription" name="eventDescription"></textarea>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="date-and-time-group">
-                    <div class="input date">
-                        <label for="eventDate">Date</label>
-                        <input class="text-input" type="date" id="eventDate" name="eventDate">
-                    </div>
-                    <div class="input time">
-                        <label for="startTime">Start Time</label>
-                        <input class="text-input" type="time" id="startTime" name="startTime">
-                    </div>
-                    <div class="input time">
-                        <label for="endTime">End Time</label>
-                        <input class="text-input" type="time" id="endTime" name="endTime">
-                    </div>
+                <div>
+                    <button type="button" class="tertiary-button with-icon" onclick="addAnotherEvent(event)">
+                        <span class="icon-container-default"><img class="icon-default" src="/img/add-light.png" alt=""></span>Add Another Event
+                    </button>
                 </div>
-
-                <div class="input">
-                    <label for="eventDescription">Description</label>
-                    <textarea class="paragraph-input eventDescription" type="text" id="eventDescription" name="eventDescription"></textarea>
-                </div>
+                
 
 
                 <div class="primary-button continue-button">
-                    <input class="input-button button-text" type="submit" value="Add Events" id="">
+                    <input class="input-button button-text" type="submit" value="Save Plan" id="">
                 </div>
 
             </form>

@@ -28,13 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //--------------  Routing ----------------//
 const travelPlansRouter = require("./routes/travelPlanRouter.js");
-const homepageRouter = require("./routes/homepageRouter.js");
-
-
 
 app.use('/myplans', travelPlansRouter)
-app.use('/', homepageRouter)
-
-
 
 startServer();
